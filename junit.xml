@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+    <testsuite errors="0" failures="2" hostname="seveniruby.local" name="pytest" skipped="0" tests="8" time="0.392"
+               timestamp="2020-11-04T21:33:31.902502">
+        <testcase classname="tests.test_calc.TestCalc" name="test_sum" time="0.008">
+            <failure
+                    message="assert 3 == 4&#10; +  where 3 = &lt;bound method Calc.sum of &lt;src.calc.Calc object at 0x10cf9ebd0&gt;&gt;(1, 1, 1)&#10; +    where &lt;bound method Calc.sum of &lt;src.calc.Calc object at 0x10cf9ebd0&gt;&gt; = &lt;src.calc.Calc object at 0x10cf9ebd0&gt;.sum">
+                self = &lt;tests.test_calc.TestCalc object at 0x10cf9e950&gt;
+
+                def test_sum(self):
+                calc = Calc()
+                assert calc.sum(1, 2, 3) == 6
+                &gt; assert calc.sum(1, 1, 1) == 4
+                E assert 3 == 4
+                E + where 3 = &lt;bound method Calc.sum of &lt;src.calc.Calc object at 0x10cf9ebd0&gt;&gt;(1, 1, 1)
+                E + where &lt;bound method Calc.sum of &lt;src.calc.Calc object at 0x10cf9ebd0&gt;&gt; = &lt;src.calc.Calc
+                object at 0x10cf9ebd0&gt;.sum
+
+                tests/test_calc.py:8: AssertionError
+            </failure>
+        </testcase>
+        <testcase classname="tests.test_calc_pytest" name="test_sum" time="0.001"/>
+        <testcase classname="tests.test_calc_pytest" name="test_sum2" time="0.004"/>
+        <testcase classname="tests.test_calc_pytest.TestCalcPytest" name="test_div[2-1-2]" time="0.003"/>
+        <testcase classname="tests.test_calc_pytest.TestCalcPytest" name="test_div[3-1-3]" time="0.002"/>
+        <testcase classname="tests.test_calc_pytest.TestCalcPytest" name="test_div[0-3-0]" time="0.005"/>
+        <testcase classname="tests.test_calc_pytest.TestCalcPytest" name="test_div[0.3-0.1-3]" time="0.004">
+            <failure
+                    message="assert 2.9999999999999996 == 3&#10; +  where 2.9999999999999996 = &lt;bound method Calc.div of &lt;src.calc.Calc object at 0x10d02c450&gt;&gt;(0.3, 0.1)&#10; +    where &lt;bound method Calc.div of &lt;src.calc.Calc object at 0x10d02c450&gt;&gt; = &lt;src.calc.Calc object at 0x10d02c450&gt;.div&#10; +      where &lt;src.calc.Calc object at 0x10d02c450&gt; = &lt;tests.test_calc_pytest.TestCalcPytest object at 0x10d02cb50&gt;.calc">
+                self = &lt;tests.test_calc_pytest.TestCalcPytest object at 0x10d02cb50&gt;, first = 0.3, second = 0.1,
+                expect = 3
+
+                @pytest.mark.it
+                @pytest.mark.parametrize('first, second, expect', [
+                [2, 1, 2],
+                [3, 1, 3],
+                [0, 3, 0],
+                [0.3, 0.1, 3]
+                ])
+                def test_div(self, first, second, expect):
+                &gt; assert self.calc.div(first, second) == expect
+                E assert 2.9999999999999996 == 3
+                E + where 2.9999999999999996 = &lt;bound method Calc.div of &lt;src.calc.Calc object at 0x10d02c450&gt;&gt;(0.3,
+                0.1)
+                E + where &lt;bound method Calc.div of &lt;src.calc.Calc object at 0x10d02c450&gt;&gt; = &lt;src.calc.Calc
+                object at 0x10d02c450&gt;.div
+                E + where &lt;src.calc.Calc object at 0x10d02c450&gt; = &lt;tests.test_calc_pytest.TestCalcPytest object
+                at 0x10d02cb50&gt;.calc
+
+                tests/test_calc_pytest.py:31: AssertionError
+            </failure>
+        </testcase>
+        <testcase classname="tests.test_calc_pytest.TestCalcPytest" name="test_mul" time="0.005"/>
+    </testsuite>
+</testsuites>
